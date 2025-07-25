@@ -1,4 +1,4 @@
-## Phone book clie with Rust
+## Phone book cli with Rust
 
 a mini phone book with rust for learn rust!
 
