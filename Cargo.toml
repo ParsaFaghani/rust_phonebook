@@ -1,0 +1,9 @@
+[package]
+name = "rust_phonebook"
+version = "0.1.0"
+edition = "2024"
+
+[dependencies]
+colored="3"
+prettytable-rs = "0.10"
+dialoguer = "0.11"
