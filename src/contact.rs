@@ -14,6 +14,10 @@ pub fn add_contact(contacts: &mut HashMap<String, Contact>, name: &str, cntct: C
     contacts.insert(name.to_string(), cntct);
 }
 
+pub fn rem_contact(contacts: &mut HashMap<String, Contact>, name: String) {
+    contacts.remove(&name);
+}
+
 pub fn print_contacts(contacts: &HashMap<String, Contact>) {
     let mut table = Table::new();
     table.add_row(Row::new(vec![

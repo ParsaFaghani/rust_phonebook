@@ -18,7 +18,8 @@ fn main() {
         println!("{}","Choose an option".red());
         println!("{}","1 .Print all exist contacts".blue());
         println!("{}","2 .Add contact".blue());
-        println!("{}","3 .Exit.".blue());
+        println!("{}","3 .Remove contact".blue());
+        println!("{}","4 .Exit.".blue());
 
         let Choice: String = Input::new()
             .with_prompt("Enter Choice: ")
@@ -44,7 +45,14 @@ fn main() {
                 cntct.phone_numbers.push(phone_num.to_string());
                 contact::add_contact(&mut contacts, &name, cntct);
             },
-            "3" => break,
+            "3" => {
+                let name: String = Input::new()
+                    .with_prompt("Name")
+                    .interact_text()
+                    .unwrap();
+                contact::rem_contact(&mut contacts, name);
+            },
+            "4" => break,
             _ => {println!("{}","Invalid Choice".red()); },
         }
 
