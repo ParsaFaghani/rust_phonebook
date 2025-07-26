@@ -2,8 +2,13 @@ use std::collections::HashMap;
 use colored::*;
 use prettytable::{Table, Row, Cell};
 use dialoguer::Input;
+use serde::{Serialize, Deserialize};
+use std::fs::File;
+use std::io;
+use std::io::BufReader;
 
-#[derive(Debug)]
+
+#[derive(Debug, Serialize, Deserialize)]
 pub struct Contact {
     pub phone_numbers: Vec<String>,
 
@@ -37,4 +42,17 @@ pub fn print_contacts(contacts: &HashMap<String, Contact>) {
 
     // println!("{}", "Raw Debug View:".bright_black());
     // println!("{:#?}", contacts);
+}
+
+pub fn save_contacts(path: &str, contacts: &HashMap<String, Contact>) -> io::Result<()> {
+    let file = File::create(path)?;
+    serde_json::to_writer_pretty(file, &contacts)?;
+    Ok(())
+}
+
+pub fn load_contacts(path: &str) -> io::Result<HashMap<String, Contact>> {
+    let file = File::open(path)?;
+    let reader = BufReader::new(file);
+    let contacts: HashMap<String, Contact> = serde_json::from_reader(reader)?;
+    Ok(contacts)
 }
