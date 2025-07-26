@@ -10,6 +10,6 @@ todo:
 - [ ] Add a many numbers for a contact
 - [ ] Search Contact
 - [ ] edit Contact
-- [ ] save and load Contacts
+- [X] save and load Contacts
 
 to be continued
