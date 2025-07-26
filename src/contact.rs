@@ -1,7 +1,5 @@
 use std::collections::HashMap;
-use colored::*;
 use prettytable::{Table, Row, Cell};
-use dialoguer::Input;
 use serde::{Serialize, Deserialize};
 use std::fs::File;
 use std::io;

@@ -1,6 +1,5 @@
 use std::collections::HashMap;
 use colored::*;
-use prettytable::{Table, Row, Cell};
 use dialoguer::Input;
 use std::process::Command;
 
@@ -28,12 +27,12 @@ fn main() {
         println!("{}","3 .Remove contact".blue());
         println!("{}","4 .Exit.".blue());
 
-        let Choice: String = Input::new()
+        let choice: String = Input::new()
             .with_prompt("Enter Choice: ")
             .interact_text()
             .unwrap();
         clear_screen();
-        match Choice.trim() {
+        match choice.trim() {
             "1" => {
                 contact::print_contacts(&contacts);
             },
@@ -47,7 +46,8 @@ fn main() {
                     .with_prompt("Phone Number")
                     .interact_text()
                     .unwrap();                    
-                let mut cntct = contact::Contact {                             phone_numbers: Vec::new(),
+                let mut cntct = contact::Contact { 
+                    phone_numbers: Vec::new(),
                 };
                 cntct.phone_numbers.push(phone_num.to_string());
                 contact::add_contact(&mut contacts, &name, cntct);
@@ -63,6 +63,10 @@ fn main() {
             _ => {println!("{}","Invalid Choice".red()); },
         }
         let err = contact::save_contacts(&"ContactBook.json", &contacts);
+        match err {
+            Err(e) => {eprintln!("err: {}", e); },
+            _ => {},
+        }
         // println!("save");
     }
 }

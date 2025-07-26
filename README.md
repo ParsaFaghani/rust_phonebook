@@ -7,9 +7,9 @@ todo:
 - [X] add contact
 - [X] view contacts
 - [X] Remove Contact
-- [ ] Add a many numbers for a contact
+- [ ] Add many numbers for a contact
 - [ ] Search Contact
 - [ ] edit Contact
 - [X] save and load Contacts
 
-to be continued
+This project is currently on hold.
