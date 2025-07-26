@@ -14,6 +14,13 @@ mod contact;
 fn main() {
     let mut contacts: HashMap<String, contact::Contact> = HashMap::new();
 
+    match contact::load_contacts(&"ContactBook.json") {
+        Ok(c) => {contacts = c;},
+        Err(e) => {
+            eprintln!("Error to load : {}", e);
+        },
+    }
+
     loop {
         println!("{}","Choose an option".red());
         println!("{}","1 .Print all exist contacts".blue());
@@ -55,7 +62,7 @@ fn main() {
             "4" => break,
             _ => {println!("{}","Invalid Choice".red()); },
         }
-
-        // println!("Hello, world!");
+        let err = contact::save_contacts(&"ContactBook.json", &contacts);
+        // println!("save");
     }
 }
