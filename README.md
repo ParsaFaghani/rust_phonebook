@@ -11,5 +11,5 @@ todo:
 - [ ] Search Contact
 - [ ] edit Contact
 - [X] save and load Contacts
-
+(first work on Linux terminal(for use "clear" terminal command in clearness screen function and if receive error, change "clear" to "cls" for windows))
 This project is currently on hold.
